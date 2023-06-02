@@ -4,12 +4,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import items from '../data/timelinedata'
 import MAccordion from './Accordion';
 import portfolioData from '../data/portfoliodata';
+import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     card: {
         width: '100%',
         padding: '5px',
-        color: '#fafafa'
+        color: '#fafafa',
+        minHeight:'unset'
     },
     cardTitleImage: {
         alignSelf: 'start',
@@ -33,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Timeline(props) {
     const classes = useStyles();
     return (
-        <div>
+        <div style={{height:'50vh'}}>
             <Chrono
                 slideShow={true}
                 mode="VERTICAL"
@@ -47,7 +49,8 @@ export default function Timeline(props) {
                     cardForeColor: 'violet',
                     titleColor: '#fff',
                     titleColorActive: '#000',
-                }}>
+                }}
+                cardHeight={'unset'}>
 
                 {portfolioData ? portfolioData.map(element => {
                     return (
@@ -57,7 +60,13 @@ export default function Timeline(props) {
                                 <label className={classes.cardTitleText}><h3>{element.title}</h3></label>
                             </div>
                             <div className={classes.cardDesc}>
-                                <MAccordion items={element.cardItems} showDetails={props.showDetails} />
+                                <Typography style={{textAlign:'justify', textJustify: 'inter-word'}}>
+                                    {element.summary}
+                                </Typography>
+                                {element.cardItems ? 
+                                 <MAccordion items={element.cardItems} showDetails={props.showDetails} />
+                                : null}
+                               
                             </div>
                         </div>
                     )

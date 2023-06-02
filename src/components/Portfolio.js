@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Timeline from './Timeline';
-import { Chip, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from '@material-ui/core';
+import { Chip, Grid, Typography } from '@material-ui/core';
 import clsx from 'clsx';
-import { ArrowForwardIos } from '@material-ui/icons';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -17,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
   rightpan: {
     height: '100vh',
     padding: '8rem',
-    overflowY: 'scroll'
   },
   profileImage: {
     borderRadius: '50%',
@@ -29,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     color: 'green',
     border: 'solid #04d9ff 1px',
     padding: '20px',
-    clipPath: "polygon(0 0, 1% 99%, 100% 113%, 100% 90%, 94% 0)"
+    clipPath: "polygon(0 0, 1% 99%, 100% 113%, 100% 90%, 96% 0)"
   },
   details: {
     marginLeft: '5vh',
@@ -50,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
       border: '#fafafa 1px solid',
       color: '#fafafa'
     }
-  }
+  },
 }));
 export default function Portfolio() {
   const classes = useStyles();
@@ -72,19 +70,19 @@ export default function Portfolio() {
                   <Grid item md={3}>
                     <img src={process.env.PUBLIC_URL + '/images/pipboy.gif'} className={classes.pipboy} alt='pip' style={{maxHeight:'70%'}}/>
                   </Grid>
-                  <Grid item md={9}>
-                    <List>
+                  <Grid item md={9} style={{textAlign:'justify', textJustify: 'inter-word'}}>
                       {projectDetails.map((el, i) => {
                         return (
-                          <ListItem button key={i}>
-                            <ListItemIcon>
-                              <ArrowForwardIos style={{ color: 'green' }} />
-                            </ListItemIcon>
-                            <ListItemText primary={el.heading + ": " + el.summary} />
-                          </ListItem>
+                          <div>
+                            <Typography style={{fontWeight:'bold'}}>
+                              {el.heading}
+                            </Typography>
+                            <Typography>
+                              {el.summary}
+                            </Typography>
+                          </div>  
                         )
                       })}
-                    </List>
                   </Grid>
                 </Grid>
                 :
@@ -160,7 +158,7 @@ export default function Portfolio() {
               label="PGSQL"
               variant="outlined" />
           </div>
-          <Timeline className={classes.timeline} showDetails={showDetails} />
+          <Timeline showDetails={showDetails} />
         </Grid>
       </Grid>
     </div>
