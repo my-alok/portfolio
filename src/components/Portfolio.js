@@ -1,42 +1,29 @@
 import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-// import TabLayout from './TabLayout'
 import Timeline from './Timeline';
-import { Chip, List, ListItem, ListItemIcon, ListItemText, Typography } from '@material-ui/core';
+import { Chip, Grid, List, ListItem, ListItemIcon, ListItemText, Typography } from '@material-ui/core';
 import clsx from 'clsx';
 import { ArrowForwardIos } from '@material-ui/icons';
-import { useCallback } from 'react';
 
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    height: '100vh',
-    // backgroundImage: `url(${process.env.PUBLIC_URL + '/assets/bg.jpg'})`,
-    // backgroundRepeat: 'no-repeat',
-    // backgroundSize: 'cover',
-
-    backgroundColor: '#000'
+    height: '100vh'
   },
   leftpan: {
-    height: '100vh',
-    width: '40%'
+    textAlign: 'center'
   },
   rightpan: {
     height: '100vh',
-    width: '60%',
-    padding: '10vh',
+    padding: '8rem',
     overflowY: 'scroll'
   },
   profileImage: {
     borderRadius: '50%',
     maxHeight: '18rem',
     border: '1vh solid #47a300',
-    marginTop: '15vh',
-    marginLeft: '20vh'
-  },
-  timeline: {
-
+    marginTop: '15vh'
   },
   header: {
     color: 'green',
@@ -46,9 +33,10 @@ const useStyles = makeStyles((theme) => ({
   },
   details: {
     marginLeft: '5vh',
-    maxHeight:'18rem',
+    maxHeight: '18rem',
     position: 'relative',
-    marginTop: '10vh'
+    marginTop: '10vh',
+    textAlign: 'center'
   },
   chipstray: {
     marginTop: '10px',
@@ -62,124 +50,119 @@ const useStyles = makeStyles((theme) => ({
       border: '#fafafa 1px solid',
       color: '#fafafa'
     }
-  },
-  pipboy: {
-    maxHeight:'18rem',
-    objectFit: 'cover',
-    overflow: 'hidden',
   }
 }));
 export default function Portfolio() {
   const classes = useStyles();
   const [projectDetails, setProjectDetails] = useState();
-  
-  const showDetails = useCallback((e) => {
+
+  const showDetails = (e) => {
     setProjectDetails(e);
-  }, [projectDetails]);
+  };
 
   return (
     <div className={classes.root}>
-      <div className={classes.leftpan}>
-        <div>
-          <img src={process.env.PUBLIC_URL + '/images/alok.jpg'} className={classes.profileImage} alt='profile' />
-        </div>
-      <div className={clsx(classes.header, classes.details)}>
-          {projectDetails ? 
-          <div>
-            {/* <div style={{textAlign:'center'}}>
-            <img src={process.env.PUBLIC_URL+'/images/pipboy.gif'} className={classes.pipboy} class="animate__animated animate__slideInRight"/>
-          </div> */}
-          <List style={{display: 'inline-block'}}>
-            {projectDetails.map(el=>{
-              return (
-                <ListItem button>
-                  <ListItemIcon>
-                    <ArrowForwardIos style={{ color: 'green' }} />
-                  </ListItemIcon>
-                  <ListItemText primary={el.heading+": "+el.summary} />
-                </ListItem>
-              )
-            })}
-          </List>
+      <Grid container spacing={0}>
+        <Grid item md={5} sm={12}>
+          <div className={classes.leftpan}>
+            <img src={process.env.PUBLIC_URL + '/images/alok.jpg'} className={classes.profileImage} alt='profile' />
+            <div className={clsx(classes.header, classes.details)}>
+              {projectDetails ?
+                <Grid container md={12}>
+                  <Grid item md={3}>
+                    <img src={process.env.PUBLIC_URL + '/images/pipboy.gif'} className={classes.pipboy} alt='pip' style={{maxHeight:'70%'}}/>
+                  </Grid>
+                  <Grid item md={9}>
+                    <List>
+                      {projectDetails.map((el, i) => {
+                        return (
+                          <ListItem button key={i}>
+                            <ListItemIcon>
+                              <ArrowForwardIos style={{ color: 'green' }} />
+                            </ListItemIcon>
+                            <ListItemText primary={el.heading + ": " + el.summary} />
+                          </ListItem>
+                        )
+                      })}
+                    </List>
+                  </Grid>
+                </Grid>
+                :
+                <Grid item md={12}>
+                  <img src={process.env.PUBLIC_URL + '/images/pipboy.gif'} className={classes.pipboy} alt='pip' style={{maxWidth:'20%'}}/>
+                </Grid>
+              }
+            </div>
           </div>
-          : 
-          <div style={{textAlign:'center'}}>
-            <img src={process.env.PUBLIC_URL+'/images/pipboy.gif'} className={classes.pipboy} class="animate__animated animate__slideInRight"/>
+        </Grid>
+        <Grid item md={7} className={classes.rightpan}>
+          <Grid item sm={12} className={classes.header}>
+            <Typography>
+              I'm a Software Engineer, specializing in the Application development arena. I've been developing applications in Healthcare, Supply Chain Management and Entertainment domain for past 4+ Years.
+              I'm currently employed as Software Engineer II with Blueyonder Inc. I'm hands-on in all stages of the software development cycle, from planning and design to testing and deployment. No two days are the same for me; my tasks may involve analyzing algorithms, altering code, fixing bugs, brainstorming ideas, or integrating new systems.
+            </Typography>
+          </Grid>
+          <div className={classes.chipstray}>
+            <Chip
+              icon={
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" height={15} alt='' />
+              }
+              color="default"
+              label="Java"
+              variant="outlined" />
+            <Chip
+              icon={
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" height={15} alt='' />
+              }
+              color="default"
+              label="Spring"
+              variant="outlined" />
+            <Chip
+              icon={
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height={15} alt='' />
+              }
+              color="default"
+              label="React"
+              variant="outlined" />
+            <Chip
+              icon={
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" height={15} alt='' />
+              }
+              color="default"
+              label="Amazon web Services"
+              variant="outlined" />
+            <Chip
+              icon={
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" height={15} alt='' />
+              }
+              color="default"
+              label="Azure"
+              variant="outlined" />
+            <Chip
+              icon={
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg" height={15} alt='' />
+              }
+              color="default"
+              label="Android"
+              variant="outlined" />
+            <Chip
+              icon={
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" color='#fff' height={15} alt='' />
+              }
+              color="default"
+              label="MSSQL"
+              variant="outlined" />
+            <Chip
+              icon={
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" height={15} alt='' />
+              }
+              color="default"
+              label="PGSQL"
+              variant="outlined" />
           </div>
-          
-          }
-        </div> 
-        
-      </div>
-      <div className={classes.rightpan}>
-        <div className={classes.header}>
-          <Typography>
-            I'm a Software Engineer, specializing in the Application development arena. I've been developing applications in Healthcare, Supply Chain Management and Entertainment domain for past 4+ Years.
-            I'm currently employed as Software Engineer II with Blueyonder Inc. I'm hands-on in all stages of the software development cycle, from planning and design to testing and deployment. No two days are the same for me; my tasks may involve analyzing algorithms, altering code, fixing bugs, brainstorming ideas, or integrating new systems.
-          </Typography>
-        </div>
-        <div className={classes.chipstray}>
-          <Chip
-            icon={
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" height={15} />
-            }
-            color="default"
-            label="Java"
-            variant="outlined" />
-          <Chip
-            icon={
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" height={15} />
-            }
-            color="default"
-            label="Spring"
-            variant="outlined" />
-          <Chip
-            icon={
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height={15} />
-            }
-            color="default"
-            label="React"
-            variant="outlined" />
-          <Chip
-            icon={
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" height={15} />
-            }
-            color="default"
-            label="Amazon web Services"
-            variant="outlined" />
-          <Chip
-            icon={
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" height={15} />
-            }
-            color="default"
-            label="Azure"
-            variant="outlined" />
-          <Chip
-            icon={
-
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg" height={15} />
-
-            }
-            color="default"
-            label="Android"
-            variant="outlined" />
-          <Chip
-            icon={
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" color='#fff' height={15} />
-            }
-            color="default"
-            label="MSSQL"
-            variant="outlined" />
-          <Chip
-            icon={
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" height={15} />
-            }
-            color="default"
-            label="PGSQL"
-            variant="outlined" />
-        </div>
-        <Timeline className={classes.timeline} showDetails = {showDetails}/>
-      </div>
+          <Timeline className={classes.timeline} showDetails={showDetails} />
+        </Grid>
+      </Grid>
     </div>
   )
 }

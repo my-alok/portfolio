@@ -59,7 +59,7 @@ export default function MAccordion(props) {
     return (
         <div>
             {
-                items.map((element, i) => {
+                items?items.map((element, i) => {
                     return (
                         <Accordion square expanded={expanded === i} onChange={handleChange(i, element.details)}>
                             <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
@@ -73,7 +73,7 @@ export default function MAccordion(props) {
                         </Accordion>
                     )
                 })
-            }
+            :null}
         </div>
     );
 }

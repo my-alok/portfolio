@@ -1,20 +1,7 @@
 const portfolioData = [{
     title:"JP Morgan Chase & Co.",
     logo: "/images/jp.jpg",
-    cardItems: [{
-        heading: "Robin App",
-        summary: "Warehouse management system for managing multiple warehouse items, loading, unloading, replenishments. Worked on multiple support requests, reproducing, analyzing, fixing bugs and writing test cases for Fitnesse framwork.",
-        details: [{
-            heading: "",
-            summary: "I used internal framework (MOCA) to for data operations and web service commands."
-            }, {
-                heading: "Underlying frameworks",
-                summary: "Spring, MOCA, ExtJS"
-            }, {
-                heading: "Languages and tech",
-                summary: "C, Java, SQL, MOCA commands, JavaScript"
-            }]
-    }]
+    
 }, {
     title:"Blue Yonder Inc.",
     logo: "/images/by.png",

@@ -9,10 +9,10 @@ import {AiOutlineHome, AiOutlineBlock, AiOutlineMail, AiOutlineFolderOpen} from 
 const useStyles = makeStyles((theme) => ({
     appbar: {
         background: 'none',
-        fontFamily: 'Nunito',
     },
     appbarTitle: {
-        flexGrow: '1'
+        flexGrow: '1',
+        fontWeight:'900'
     },
     appbarWrapper: {
         width: '80%',
@@ -68,7 +68,7 @@ export default function Header() {
             <AppBar className={classes.appbar} elevation={0}>
                 <Toolbar className={classes.appbarWrapper}>
                     <h1 className={classes.appbarTitle}>
-                        .
+                        ALOK.
                     </h1>
                     <IconButton onClick={toggleDrawer()}>
                         <SortIcon className={classes.icon} />

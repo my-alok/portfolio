@@ -9,6 +9,7 @@ import Portfolio from './components/Portfolio';
 const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: '100vh',
+    backgroundColor: '#000',
   }
 }));
 export default function App() {

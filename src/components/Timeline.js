@@ -49,20 +49,20 @@ export default function Timeline(props) {
                     titleColorActive: '#000',
                 }}>
 
-                {portfolioData.map(element => {
+                {portfolioData ? portfolioData.map(element => {
                     return (
                         <div className={classes.card}>
                             <div className={classes.cardTitleImage}>
-                                <img src={window.location.origin + element.logo} height={30} style={{ marginRight: '10px' }} />
+                                <img src={window.location.origin + element.logo} height={30} style={{ marginRight: '10px' }} alt='f' />
                                 <label className={classes.cardTitleText}><h3>{element.title}</h3></label>
                             </div>
                             <div className={classes.cardDesc}>
-                                <MAccordion items={element.cardItems} showDetails = {props.showDetails}/>
+                                <MAccordion items={element.cardItems} showDetails={props.showDetails} />
                             </div>
                         </div>
                     )
                 }
-                )}
+                ) : null}
             </Chrono>
         </div>
     )
