@@ -5,6 +5,7 @@ const portfolioData = [{
 }, {
     title:"Blue Yonder Inc.",
     logo: "/images/by.png",
+    type: "work",
     cardItems: [{
         heading: "Warehouse Management System",
         summary: "A cutting-edge warehouse management solution that combines automation, real-time visibility, and intelligent algorithms. It streamlines operations, optimizes inventory, and enhances customer service. By leveraging advanced technology, the project improves efficiency, reduces costs, and ensures accurate inventory management for warehouses.",
@@ -19,6 +20,7 @@ const portfolioData = [{
 }, {
     title:"NextGen Invent Corporation",
     logo: "/images/ngi.png",
+    type: "work",
     cardItems: [{
         heading: "Dr. Susan Love Research Foundation",
         summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vestibulum mollis odio at pharetra. Quisque dictum odio eu dictum accumsan. Cras egestas urna sed molestie vehicula. Quisque eu convallis massa. Praesent sit amet tincidunt purus, id lacinia dolor. Fusce sapien magna, ornare gravida massa quis, lobortis varius nibh. Suspendisse quis enim in est bibendum gravida et eget lorem. Cras iaculis convallis ex.",
@@ -75,6 +77,7 @@ const portfolioData = [{
 },{
     title:"Ajay Kumar Garg Engineering College",
     logo: "/images/akg.png",
+    type: "education",
     cardItems : [ {
         heading:"Master of Computer Applications",
         summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vestibulum mollis odio at pharetra. Quisque dictum odio eu dictum accumsan. Cras egestas urna sed molestie vehicula. Quisque eu convallis massa. Praesent sit amet tincidunt purus, id lacinia dolor. Fusce sapien magna, ornare gravida massa quis, lobortis varius nibh. Suspendisse quis enim in est bibendum gravida et eget lorem. Cras iaculis convallis ex.",
@@ -92,6 +95,7 @@ const portfolioData = [{
 },{
     title:"Punjab Technical University",
     logo: "/images/PTULogo.gif",
+    type: "education",
     cardItems : [ {
         heading:"Bachelor of Computer Applications",
         summary: "Joined Distance Education Program (DEP) offered by NIPS College of IT & Mgmt. Katra Prayagraj in Sep 2011 just after completing my SSE and completed BCA in Mar 2015 with 72% Score.",

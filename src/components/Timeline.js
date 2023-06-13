@@ -64,7 +64,7 @@ export default function Timeline(props) {
                                     {element.summary}
                                 </Typography>
                                 {element.cardItems ? 
-                                 <MAccordion items={element.cardItems} showDetails={props.showDetails} />
+                                 <MAccordion items={element} showDetails={props.showDetails} />
                                 : null}
                                
                             </div>

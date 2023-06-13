@@ -74,13 +74,13 @@ export default function Portfolio() {
                       {projectDetails.map((el, i) => {
                         return (
                           <div>
-                            <Typography style={{fontWeight:'bold'}}>
+                            <Typography style={{fontWeight:'bold', textDecoration: 'underline'}}>
                               {el.heading}
                             </Typography>
                             <Typography>
                               {el.summary}
                             </Typography>
-                          </div>  
+                          </div>
                         )
                       })}
                   </Grid>

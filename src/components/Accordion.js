@@ -4,7 +4,6 @@ import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
-import { List, ListItem } from '@material-ui/core';
 
 const Accordion = withStyles({
     root: {
@@ -50,7 +49,7 @@ const AccordionDetails = withStyles((theme) => ({
 
 export default function MAccordion(props) {
     const [expanded, setExpanded] = React.useState();
-    const { items, showDetails } = props;
+    const { item, showDetails } = props;
     const handleChange = (panel, details) => (event, newExpanded) => {
         setExpanded(newExpanded ? panel : false);
         showDetails(newExpanded? details : null);
@@ -59,9 +58,9 @@ export default function MAccordion(props) {
     return (
         <div>
             {
-                items?items.map((element, i) => {
+                item.cardItems ? item.cardItems.map((element, i) => {
                     return (
-                        <Accordion square expanded={expanded === i} onChange={handleChange(i, element.details)}>
+                        <Accordion square expanded={expanded === i} onChange={handleChange(i, element.details, item.type)}>
                             <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
                                 <Typography>{element.heading}</Typography>
                             </AccordionSummary>
