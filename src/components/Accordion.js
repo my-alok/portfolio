@@ -49,7 +49,7 @@ const AccordionDetails = withStyles((theme) => ({
 
 export default function MAccordion(props) {
     const [expanded, setExpanded] = React.useState();
-    const { item, showDetails } = props;
+    const { items, showDetails } = props;
     const handleChange = (panel, details) => (event, newExpanded) => {
         setExpanded(newExpanded ? panel : false);
         showDetails(newExpanded? details : null);
@@ -58,9 +58,9 @@ export default function MAccordion(props) {
     return (
         <div>
             {
-                item.cardItems ? item.cardItems.map((element, i) => {
+                items.cardItems ? items.cardItems.map((element, i) => {
                     return (
-                        <Accordion square expanded={expanded === i} onChange={handleChange(i, element.details, item.type)}>
+                        <Accordion square expanded={expanded === i} onChange={handleChange(i, element.details, items.type)}>
                             <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
                                 <Typography>{element.heading}</Typography>
                             </AccordionSummary>
